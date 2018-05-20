@@ -1,0 +1,24 @@
+<config>
+    <file>
+        <id>0</id>
+        <name>D:\FileParserFiles\NSW.csv</name>
+        <separator>|</separator>
+        <rule>
+            <field>CCY</field>
+            <containsValue>EUR</containsValue>
+            <logic type="equals" limit="1toMany" count="1000">
+                <toFile>1</toFile>
+                <toField>CURRENCY</toField>
+            </logic>
+            <logic type="contains">
+                <toFile>1</toFile>
+                <toField>CURRENCY</toField>
+            </logic>
+        </rule>
+    </file>
+    <file>
+        <id>1</id>
+        <name>D:\FileParserFiles\Papadopoulos</name>
+        <separator>|</separator>
+    </file>
+</config>
