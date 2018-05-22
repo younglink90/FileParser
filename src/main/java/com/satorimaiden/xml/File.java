@@ -13,7 +13,6 @@ public class File {
     private String id;
     @XmlElement
     private String name;
-    @XmlElement
     private String separator;
     @XmlElement(name = "rule")
     private List<Rule> rules = new ArrayList<>();
@@ -38,6 +37,7 @@ public class File {
         return separator;
     }
 
+    @XmlElement
     public void setSeparator(String separator) {
         if (separator.equals("|"))
             separator = '\\' + separator;
