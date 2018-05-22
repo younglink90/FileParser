@@ -1,18 +1,23 @@
 package com.satorimaiden.xml.logics;
 
-import com.satorimaiden.xml.Logic;
+import com.satorimaiden.pojo.File;
+import com.satorimaiden.pojo.Logic;
 
 import java.util.function.Predicate;
 
 public abstract class BaseLogicComparator implements Predicate<String> {
 
-    public String toFile;
-    public String toField;
-    public String value;
+    private File fromFile;
+    private String fromField;
+    private File toFile;
+    private String toField;
+    private String value;
 
     protected BaseLogicComparator(Logic logic) {
         this.toField = logic.getToField();
         this.toFile = logic.getToFile();
+        this.fromField = logic.getFromField();
+        this.fromFile = logic.getFromFile();
     }
 
     public static BaseLogicComparator of(Logic logic) {
@@ -26,11 +31,11 @@ public abstract class BaseLogicComparator implements Predicate<String> {
         }
     }
 
-    public String getToFile() {
+    public File getToFile() {
         return toFile;
     }
 
-    public void setToFile(String toFile) {
+    public void setToFile(File toFile) {
         this.toFile = toFile;
     }
 
@@ -48,5 +53,21 @@ public abstract class BaseLogicComparator implements Predicate<String> {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public File getFromFile() {
+        return fromFile;
+    }
+
+    public void setFromFile(File fromFile) {
+        this.fromFile = fromFile;
+    }
+
+    public String getFromField() {
+        return fromField;
+    }
+
+    public void setFromField(String fromField) {
+        this.fromField = fromField;
     }
 }

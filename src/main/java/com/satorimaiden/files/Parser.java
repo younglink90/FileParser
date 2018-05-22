@@ -10,7 +10,9 @@ public abstract class Parser {
     private List<String> values;
 
     public Parser(String separator, String row) {
-        values = Stream.of(row).flatMap(r -> Arrays.stream(r.split(separator))).collect(Collectors.toList());
+        values = Stream.of(row)
+                .flatMap(r -> Arrays.stream(r.split(separator)))
+                .collect(Collectors.toList());
     }
 
     public List<String> getValues() {

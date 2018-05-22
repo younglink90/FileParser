@@ -1,7 +1,7 @@
 package com.satorimaiden.xml.logics;
 
 
-import com.satorimaiden.xml.Logic;
+import com.satorimaiden.pojo.Logic;
 
 public class Contains extends BaseLogicComparator {
 
@@ -11,6 +11,6 @@ public class Contains extends BaseLogicComparator {
 
     @Override
     public boolean test(String s) {
-        return value.contains(s);
+        return getValue().contains(s);
     }
 }

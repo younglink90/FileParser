@@ -1,44 +1,26 @@
-package com.satorimaiden.xml;
+package com.satorimaiden.pojo;
 
 import com.satorimaiden.enums.Limit;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
-
-@XmlAccessorType(XmlAccessType.NONE)
 public class Logic {
 
-    @XmlAttribute
     private String type;
-    @XmlAttribute
-    private String limit;
-    @XmlAttribute
+    private Limit limit;
     private int count;
-    @XmlElement
-    private String toFile;
-    @XmlElement
-    private String toField;
-    @XmlElement
     private String value;
-    private String fromFile;
+    private File toFile;
+    private String toField;
+    private File fromFile;
     private String fromField;
 
-    public void setLimit(String limit) {
-        this.limit = limit;
-    }
-
-    public Limit getLimit() {
-        return Limit.of(limit);
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
+    public Logic(com.satorimaiden.xml.Logic logic, File file, Rule rule) {
+        this.type = logic.getType();
+        this.limit = logic.getLimit();
+        this.count = logic.getCount();
+        this.toField = logic.getToField();
+        this.toFile = File.getById(logic.getToFile());
+        this.fromField = rule.getField();
+        this.fromFile = file;
     }
 
     public String getType() {
@@ -49,11 +31,27 @@ public class Logic {
         this.type = type;
     }
 
-    public String getToFile() {
+    public Limit getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Limit limit) {
+        this.limit = limit;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public File getToFile() {
         return toFile;
     }
 
-    public void setToFile(String toFile) {
+    public void setToFile(File toFile) {
         this.toFile = toFile;
     }
 
@@ -73,11 +71,11 @@ public class Logic {
         this.value = value;
     }
 
-    public String getFromFile() {
+    public File getFromFile() {
         return fromFile;
     }
 
-    public void setFromFile(String fromFile) {
+    public void setFromFile(File fromFile) {
         this.fromFile = fromFile;
     }
 

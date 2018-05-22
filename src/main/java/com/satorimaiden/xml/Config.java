@@ -24,9 +24,15 @@ public class Config {
         this.files = files;
     }
 
-    public static Config get() throws Exception {
-        JAXBContext context = JAXBContext.newInstance(Config.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        return (Config) unmarshaller.unmarshal(Config.class.getClassLoader().getResource("configuration.xml"));
+    public static Config get() {
+        Config conf;
+        try {
+            JAXBContext context = JAXBContext.newInstance(Config.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            conf = (Config) unmarshaller.unmarshal(Config.class.getClassLoader().getResource("configuration.xml"));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return conf;
     }
 }
